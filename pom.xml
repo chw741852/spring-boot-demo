@@ -20,5 +20,6 @@
 
     <modules>
         <module>thymeleaf</module>
+		<module>velocity</module>
     </modules>
 </project>
