@@ -23,21 +23,43 @@
 		<module>velocity</module>
     </modules>
 
-	<build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <!--<dependencies>-->
-                        <!--<dependency>-->
-                            <!--<groupId>org.springframework</groupId>-->
-                            <!--<artifactId>springloaded</artifactId>-->
-                            <!--<version>${spring-loaded.version}</version>-->
-                        <!--</dependency>-->
-                    <!--</dependencies>-->
-                </plugin>
-            </plugins>
-        </pluginManagement>
-	</build>
+    <properties>
+        <druid.version>1.0.16</druid.version>
+        <fastjson.version>1.2.7</fastjson.version>
+        <mybatis.spring.version>1.0.0</mybatis.spring.version>
+    </properties>
+
+	<dependencyManagement>
+		<dependencies>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+
+			<!-- druid -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<!-- json -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

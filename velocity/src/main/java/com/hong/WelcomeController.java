@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
 
@@ -20,5 +21,11 @@ public class WelcomeController {
         model.addAttribute("time", new Date());
         model.addAttribute("message", this.message);
         return "welcome";
+    }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test() {
+        return "The Test Page!";
     }
 }
