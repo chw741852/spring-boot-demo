@@ -11,5 +11,12 @@
         <li>From velocity: $dateTool</li>
     </ul>
     <span>Message: $message</span>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $.get('http://192.168.136.129:8080/api/supportCORS', function(data) {
+        alert(data);
+    });
+</script>
 </body>
 </html>

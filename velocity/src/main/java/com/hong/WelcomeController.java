@@ -23,9 +23,15 @@ public class WelcomeController {
         return "welcome";
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/notSupportCORS")
     @ResponseBody
-    public String test() {
-        return "The Test Page!";
+    public String notSupportCORS() {
+        return "This url not support CORS";
+    }
+
+    @RequestMapping("/api/supportCORS")
+    @ResponseBody
+    public String supportCORS() {
+        return "This url support CORS";
     }
 }
