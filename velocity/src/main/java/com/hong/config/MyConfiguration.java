@@ -1,4 +1,4 @@
-package com.hong;
+package com.hong.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
