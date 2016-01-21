@@ -34,6 +34,9 @@ public class MyConfiguration {
         };
     }
 
+    /**
+     * 用于扫描mybatis配置文件
+     */
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
