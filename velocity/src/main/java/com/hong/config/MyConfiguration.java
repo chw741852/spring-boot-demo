@@ -1,10 +1,13 @@
 package com.hong.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -29,6 +32,16 @@ public class MyConfiguration {
                 registry.addMapping("/api/**");
             }
         };
+    }
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+        factory.setDataSource(dataSource);
+        factory.setTypeAliasesPackage("com.hong.demo.domain");
+        factory.setMapperLocations(new PathMatchingResourcePatternResolver()
+                .getResources("classpath*:com/hong/**/mapper/*Mapper.xml"));
+        return factory.getObject();
     }
 
     /**
