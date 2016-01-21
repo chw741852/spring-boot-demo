@@ -1,5 +1,8 @@
 package com.hong;
 
+import com.hong.demo.domain.User;
+import com.hong.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,9 @@ import java.util.Date;
 public class WelcomeController {
     @Value("${application.message:Hello World}")
     private String message;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/")
     public String welcome(Model model) throws InterruptedException {
@@ -33,5 +39,11 @@ public class WelcomeController {
     @ResponseBody
     public String supportCORS() {
         return "This url support CORS";
+    }
+
+    @RequestMapping("/user/save")
+    public String saveUser(User user) {
+        userService.save(user);
+        return "redirect:/";
     }
 }

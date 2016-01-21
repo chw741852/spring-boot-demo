@@ -1,24 +1,42 @@
 package com.hong.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 /**
  * Created by caihongwei on 2016/1/15 17:31.
  */
 @Configuration
+@MapperScan("com.hong.demo.mapper")
 public class MyConfiguration {
+    /**
+     * 过滤允许跨域访问的api
+     * @return
+     */
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
-            // 解决跨域问题
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**");
             }
         };
+    }
+
+    /**
+     * 配置druid数据库连接池
+     */
+    @Bean(initMethod = "init", destroyMethod = "close")
+    @ConfigurationProperties(prefix = "druid.datasource")
+    public DataSource dataSource() {
+        return new DruidDataSource();
     }
 }
