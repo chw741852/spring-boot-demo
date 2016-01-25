@@ -36,12 +36,10 @@
         </RollingFile>
     </Appenders>
     <loggers>
-        <Logger level="debug">
+        <Root level="info">
+            <AppenderRef ref="Console"/>
             <AppenderRef ref="app_debug"/>
             <AppenderRef ref="app_warn"/>
-        </Logger>
-        <Root level="debug">
-            <AppenderRef ref="Console"/>
         </Root>
     </loggers>
 </Configuration>

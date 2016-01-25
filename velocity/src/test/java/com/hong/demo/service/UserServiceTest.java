@@ -2,6 +2,7 @@ package com.hong.demo.service;
 
 import com.hong.VelocityApplication;
 import com.hong.demo.domain.User;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(VelocityApplication.class)
 @WebIntegrationTest("server.port:9000")
+@Ignore
 public class UserServiceTest {
     @Autowired
     private UserService userService;
