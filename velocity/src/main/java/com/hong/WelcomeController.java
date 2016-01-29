@@ -4,6 +4,7 @@ import com.hong.demo.domain.User;
 import com.hong.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +22,14 @@ public class WelcomeController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RedisOps redisOps;
 
     @RequestMapping("/")
     public String welcome(Model model) throws InterruptedException {
         model.addAttribute("time", new Date());
         model.addAttribute("message", this.message);
+        redisOps.testConcurrent();
         return "welcome";
     }
 

@@ -18,6 +18,8 @@ public class RedisOps {
     private JedisConnectionFactory jedisConnectionFactory;
 
     /**
+     * 这里存在并发问题
+     *
      * string 类型
      * @param key key
      * @param value value
@@ -28,5 +30,35 @@ public class RedisOps {
         if (jedisConnectionFactory.getDatabase() != db)
             jedisConnectionFactory.setDatabase(db);
         stringRedisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 这里存在并发问题
+     */
+    public void testConcurrent() {
+        MyThread t1 = new MyThread(1);
+        MyThread t2 = new MyThread(2);
+        new Thread(t1).start();
+        new Thread(t2).start();
+    }
+
+    private class MyThread implements Runnable {
+        private final int db;
+
+        private MyThread(int db) {
+            this.db = db;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("start thread " + db);
+            try {
+                jedisConnectionFactory.setDatabase(db);
+                Thread.sleep(100);
+                stringRedisTemplate.opsForValue().set("foo" + db, "bar", 600, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
