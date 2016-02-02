@@ -18,17 +18,14 @@ public class RedisOps {
     private JedisConnectionFactory jedisConnectionFactory;
 
     /**
-     * 这里存在并发问题
-     *
      * string 类型
      * @param key key
      * @param value value
      * @param timeout timeout
      * @param db db
      */
-    public void setString(String key, String value, long timeout, int db) {
-        if (jedisConnectionFactory.getDatabase() != db)
-            jedisConnectionFactory.setDatabase(db);
+    public synchronized void setString(String key, String value, long timeout, int db) {
+        jedisConnectionFactory.setDatabase(db);
         stringRedisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
     }
 
@@ -53,9 +50,11 @@ public class RedisOps {
         public void run() {
             System.out.println("start thread " + db);
             try {
-                jedisConnectionFactory.setDatabase(db);
-                Thread.sleep(100);
-                stringRedisTemplate.opsForValue().set("foo" + db, "bar", 600, TimeUnit.SECONDS);
+                synchronized (this) {
+                    jedisConnectionFactory.setDatabase(db);
+                    Thread.sleep(100);
+                    stringRedisTemplate.opsForValue().set("foo" + db, "bar", 600, TimeUnit.SECONDS);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
