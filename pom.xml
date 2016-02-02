@@ -21,6 +21,7 @@
     <modules>
         <module>thymeleaf</module>
         <module>velocity</module>
+        <module>rpc</module>
     </modules>
 
     <properties>
