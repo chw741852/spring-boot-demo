@@ -14,16 +14,23 @@
     <url>http://maven.apache.org</url>
     <modules>
         <module>rpc-api</module>
+        <module>rpc-server</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thrift.version>0.9.3</thrift.version>
+        <rpc-api.version>0.0.1-SNAPSHOT</rpc-api.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <!-- rpc -->
+            <dependency>
+                <groupId>com.hong</groupId>
+                <artifactId>rpc-api</artifactId>
+                <version>${rpc-api.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.thrift</groupId>
                 <artifactId>libthrift</artifactId>
