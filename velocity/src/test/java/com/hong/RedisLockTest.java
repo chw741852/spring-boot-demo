@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by caihongwei on 2016/2/3 19:35.
@@ -23,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = VelocityApplication.class)
 @WebAppConfiguration
-//@Ignore
+@Ignore
 public class RedisLockTest {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
