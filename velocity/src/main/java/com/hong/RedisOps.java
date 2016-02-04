@@ -48,9 +48,8 @@ public class RedisOps {
 
         @Override
         public void run() {
-            System.out.println("start thread " + db);
             try {
-                synchronized (this) {
+                synchronized (RedisOps.class) {
                     jedisConnectionFactory.setDatabase(db);
                     Thread.sleep(100);
                     stringRedisTemplate.opsForValue().set("foo" + db, "bar", 600, TimeUnit.SECONDS);

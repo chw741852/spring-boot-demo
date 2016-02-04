@@ -17,7 +17,7 @@ import org.springframework.util.StopWatch;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = VelocityApplication.class)
 @WebAppConfiguration
-@Ignore
+//@Ignore
 public class RedisOpsTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -30,9 +30,6 @@ public class RedisOpsTest {
 
     @Test
     public void testConcurrent() {
-//        jedisConnectionFactory.setDatabase(2);
-//        stringRedisTemplate.opsForValue().set("foo", "bar", 100, TimeUnit.SECONDS);
-
         redisOps.testConcurrent();
     }
 
@@ -42,6 +39,6 @@ public class RedisOpsTest {
         redisOps.setString("foo1", "bar1", 600, 1);
         redisOps.setString("foo2", "bar2", 600, 2);
         stopWatch.stop();
-        System.out.println("一共耗时：" + stopWatch.getTotalTimeSeconds());
+        System.err.println("一共耗时：" + stopWatch.getTotalTimeSeconds());
     }
 }

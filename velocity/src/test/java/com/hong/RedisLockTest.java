@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by caihongwei on 2016/2/3 19:35.
@@ -55,5 +56,51 @@ public class RedisLockTest {
         assertThat(keys.iterator().next(), is(RedisLockService.DEFAULT_REGISTRY_KEY + ":lock"));
 
         lock.unlock();
+    }
+
+    @Test
+    public void testSecendLock() {
+        new Thread(new MyThread("ONE")).start();
+        new Thread(new MyThread("TWO")).start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private class MyThread implements Runnable {
+        private final String name;
+        private final RedisLockService lockService;
+        private final DistributedLock lock;
+
+        private MyThread(String name) {
+            this.name = name;
+            lockService = new RedisLockService(connectionFactory);
+            lock = lockService.obtain("lock");
+        }
+
+        @Override
+        public void run() {
+//            try {
+//                Thread.sleep(100);
+//                System.err.println("I'm " + name);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+
+            if (lock.tryLock()) {
+                try {
+                    lock.lock();
+                    Thread.sleep(100);
+                    System.err.println("I'm " + name);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                }
+            }
+        }
     }
 }
