@@ -10,4 +10,4 @@ spring:
         git:
           uri: https://github.com/cai-cloud/config-repo
 #          uri: https://github.com/spring-cloud-samples/config-repo
-          basedir: target/config
+#          basedir: target/config
