@@ -29,7 +29,7 @@ public class UserServer {
         Runnable nonBlockServer = new Runnable() {
             @Override
             public void run() {
-                nonBlockServer(processor);
+                nonblockingServer(processor);
             }
         };
 
@@ -50,7 +50,7 @@ public class UserServer {
             // Use this for a multithreaded server
             // TServer server = new TThreadPoolServer(new TServer.Args(transport).processor(processor).protocolFactory(factory));
 
-            System.out.println("Starting the simple server...");
+            System.out.println("Starting blocking server...");
             server.serve();
         } catch (TTransportException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class UserServer {
      * non blocking server
      * @param processor
      */
-    private static void nonBlockServer(UserService.Processor processor) {
+    private static void nonblockingServer(UserService.Processor processor) {
         try {
             TNonblockingServerTransport transport = new TNonblockingServerSocket(8091);
             TTransportFactory transportFactory = new TFramedTransport.Factory();
@@ -78,6 +78,7 @@ public class UserServer {
 //                    .transportFactory(transportFactory)
 //                    .protocolFactory(protocolFactory));
 
+            System.out.println("Starting nonblocking server...");
             server.serve();
         } catch (TTransportException e) {
             e.printStackTrace();

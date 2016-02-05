@@ -4,6 +4,7 @@ import com.hong.rpc.api.thrift.service.UserService;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.springframework.util.StopWatch;
@@ -19,17 +20,21 @@ public class UserClient {
     private static StopWatch stopWatch = new StopWatch();
 
     public static void main(String[] args) {
-        blockClient();
+        start();
     }
 
-    private static void blockClient() {
+    private static void start() {
         try {
-            TTransport transport = new TSocket("localhost", 8090);
+            // Blocking client
+//            TTransport transport = new TSocket("localhost", 8090);
+            // Nonblocking client. Faster
+            TTransport transport = new TFramedTransport(new TSocket("localhost", 8091));
             transport.open();
 
-            stopWatch.start();
             TProtocol protocol = new TCompactProtocol(transport);
             UserService.Client client = new UserService.Client(protocol);
+
+            stopWatch.start();
             System.out.println(client.sayHello("caihongwei"));
             stopWatch.stop();
             System.err.println("total time seconds: " + stopWatch.getTotalTimeSeconds());
