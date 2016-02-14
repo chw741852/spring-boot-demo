@@ -1,0 +1,9 @@
+# bootstrap.yml 通常用于配置不可变参数
+spring:
+  application:
+    name: foo
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: development,info,foo

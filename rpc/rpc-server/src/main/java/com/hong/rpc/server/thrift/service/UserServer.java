@@ -15,27 +15,27 @@ public class UserServer {
     public static UserServiceImpl userService;
     public static UserService.Processor processor;
 
-    public static void main(String[] args) {
-        userService = new UserServiceImpl();
-        processor = new UserService.Processor<>(userService);
-
-        Runnable blockServer = new Runnable() {
-            @Override
-            public void run() {
-                blockServer(processor);
-            }
-        };
-
-        Runnable nonBlockServer = new Runnable() {
-            @Override
-            public void run() {
-                nonblockingServer(processor);
-            }
-        };
-
-        new Thread(blockServer).start();
-        new Thread(nonBlockServer).start();
-    }
+//    public static void main(String[] args) {
+//        userService = new UserServiceImpl();
+//        processor = new UserService.Processor<>(userService);
+//
+//        Runnable blockServer = new Runnable() {
+//            @Override
+//            public void run() {
+//                blockServer(processor);
+//            }
+//        };
+//
+//        Runnable nonBlockServer = new Runnable() {
+//            @Override
+//            public void run() {
+//                nonblockingServer(processor);
+//            }
+//        };
+//
+//        new Thread(blockServer).start();
+//        new Thread(nonBlockServer).start();
+//    }
     /**
      * blocking server
      */

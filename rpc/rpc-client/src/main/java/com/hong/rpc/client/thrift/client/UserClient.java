@@ -19,9 +19,9 @@ import org.springframework.util.StopWatch;
 public class UserClient {
     private static StopWatch stopWatch = new StopWatch();
 
-    public static void main(String[] args) {
-        start();
-    }
+//    public static void main(String[] args) {
+//        start();
+//    }
 
     private static void start() {
         try {

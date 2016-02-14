@@ -17,7 +17,7 @@ import org.springframework.util.StopWatch;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = VelocityApplication.class)
 @WebAppConfiguration
-//@Ignore
+@Ignore
 public class RedisOpsTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

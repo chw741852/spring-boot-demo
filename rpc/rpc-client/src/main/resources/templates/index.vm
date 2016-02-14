@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>Index</h1>
+<hr/>
+username: $username<br/>
+remotename: $remote<br/>
+foo: $foo<br/>
+url: $url
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(function() {
+        $.ajax({
+            type: 'post',
+            url: '/refresh',
+            success: function(result) {
+                console.log(result);
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

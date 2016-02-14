@@ -1,0 +1,4 @@
+# bootstrap.yml 通常用于配置不可变参数
+spring:
+  application:
+    name: configserver
