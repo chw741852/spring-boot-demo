@@ -4,6 +4,6 @@ spring:
     name: foo
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://user:password@localhost:8888
   profiles:
     active: development,info,foo

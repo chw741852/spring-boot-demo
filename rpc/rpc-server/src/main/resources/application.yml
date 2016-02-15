@@ -1,6 +1,5 @@
 server:
   port: 8888
-
 spring:
   cloud:
     config:
@@ -8,3 +7,9 @@ spring:
         git:
           uri: https://github.com/cai-cloud/config-repo
 #          basedir: target/config
+encrypt:
+  key: cai
+security:
+  user:
+    name: user  # 默认user
+    password: password  # 不设置密码时，在启动时会随机生成一个密码，log级别info打印
