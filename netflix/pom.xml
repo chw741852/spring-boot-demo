@@ -8,19 +8,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>netflix</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>netflix</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>eureka-service</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.netflix.eureka</groupId>
+                <artifactId>eureka-client</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
