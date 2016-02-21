@@ -26,6 +26,8 @@
     </modules>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
         <druid.version>1.0.16</druid.version>
         <fastjson.version>1.2.7</fastjson.version>
         <mybatis.spring.version>1.0.0</mybatis.spring.version>
@@ -68,14 +70,19 @@
     <repositories>
         <repository>
             <id>spring-snapshots</id>
-            <url>http://repo.spring.io/snapshot</url>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
         </repository>
         <repository>
             <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone</url>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
     <pluginRepositories>
