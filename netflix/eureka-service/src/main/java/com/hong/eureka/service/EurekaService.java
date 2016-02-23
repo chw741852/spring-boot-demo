@@ -12,13 +12,12 @@ import com.netflix.discovery.EurekaClient;
  */
 public class EurekaService {
     public static void main(String[] args) {
-        DynamicPropertyFactory configInstance = DynamicPropertyFactory.getInstance();
-        ApplicationInfoManager applicationInfoManager = ApplicationInfoManager.getInstance();
-
         DiscoveryManager.getInstance().initComponent(
                 new MyDataCenterInstanceConfig(),
                 new DefaultEurekaClientConfig()
         );
+        DynamicPropertyFactory configInstance = DynamicPropertyFactory.getInstance();
+        ApplicationInfoManager applicationInfoManager = ApplicationInfoManager.getInstance();
 
         EurekaClient eurekaClient = DiscoveryManager.getInstance().getEurekaClient();
         BaseService baseService = new BaseService(applicationInfoManager, eurekaClient, configInstance);

@@ -76,7 +76,7 @@ public class BaseService {
 
     private void waitForRegistrationWithEureka(EurekaClient eurekaClient) {
         // my vip address to listen on
-        String vipAddress = configInstance.getStringProperty("eureka.vipAddress", "sampleservice.mydomain.net").get();
+        String vipAddress = configInstance.getStringProperty("eureka.vipAddress", "sampleservice1.mydomain.net").get();
         InstanceInfo nextServerInfo = null;
         while (nextServerInfo == null) {
             try {
@@ -85,7 +85,7 @@ public class BaseService {
                 System.out.println("Waiting ... verifying service registration with eureka ...");
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
