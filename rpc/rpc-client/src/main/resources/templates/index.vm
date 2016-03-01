@@ -10,7 +10,8 @@
 username: $username<br/>
 remotename: $remote<br/>
 foo: $foo<br/>
-url: $url
+url: $url<br/>
+bootstrap: $bootstrap
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>

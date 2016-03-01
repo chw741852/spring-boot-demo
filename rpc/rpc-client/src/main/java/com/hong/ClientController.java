@@ -1,10 +1,13 @@
 package com.hong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by caihongwei on 2016/2/14 11:35.
@@ -12,27 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 1、@RefreshScope起到什么作用？
  * 2、远程配置文件修改后，这里不会自动刷新。
  */
-@Controller
+@RestController
 @RefreshScope
 public class ClientController {
-    @Value("${user.username:default}")
-    private String username;
-
-    @Value("${name:myname}")
-    private String name;
-
     @Value("${foo:default}")
     private String foo;
 
-    @Value("${info.url:default}")
-    private String url;
+    @Autowired
+    private ConfigurationPropertiesConfig propertiesConfig;
 
-    @RequestMapping("index")
-    public String index(ModelMap modelMap) {
-        modelMap.addAttribute("username", username);
-        modelMap.addAttribute("remote", name);
-        modelMap.addAttribute("foo", foo);
-        modelMap.addAttribute("url", url);
-        return "index";
+    @RequestMapping("/")
+    public String home() {
+        return foo;
+    }
+
+    @RequestMapping("/user")
+    public String user() {
+        return propertiesConfig.getUsername();
     }
 }

@@ -4,6 +4,7 @@ spring:
     name: foo
   cloud:
     config:
+      label: master
       uri: http://user:password@localhost:8888
-  profiles:
-    active: development,info,foo
+#  profiles:
+#    active: development,info,foo
