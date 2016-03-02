@@ -1,10 +1,9 @@
 # bootstrap.yml 通常用于配置不可变参数
 spring:
   application:
-    name: rpcclient
+    name: rpcserver
   cloud:
     config:
-      label: master
       uri: http://user:password@localhost:8888
-#  profiles:
-#    active: development,info,foo
+logging:
+  config: classpath:config/log4j2.xml

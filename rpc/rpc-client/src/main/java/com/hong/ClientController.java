@@ -11,22 +11,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by caihongwei on 2016/2/14 11:35.
- * TODO
- * 1、@RefreshScope起到什么作用？
- * 2、远程配置文件修改后，这里不会自动刷新。
  */
 @RestController
 @RefreshScope
 public class ClientController {
-    @Value("${foo:default}")
+    @Value("${client.foo:default}")
     private String foo;
+
+    @Value("${user.password:default}")
+    private String password;
 
     @Autowired
     private ConfigurationPropertiesConfig propertiesConfig;
 
-    @RequestMapping("/")
-    public String home() {
+    @RequestMapping("/foo")
+    public String foo() {
         return foo;
+    }
+
+    @RequestMapping("/cipher")
+    public String cipher() {
+        return password;
     }
 
     @RequestMapping("/user")

@@ -16,13 +16,13 @@ bootstrap: $bootstrap
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     $(function() {
-        $.ajax({
-            type: 'post',
-            url: '/refresh',
-            success: function(result) {
-                console.log(result);
-            }
-        })
+//        $.ajax({
+//            type: 'post',
+//            url: '/refresh',
+//            success: function(result) {
+//                console.log(result);
+//            }
+//        })
     })
 </script>
 
