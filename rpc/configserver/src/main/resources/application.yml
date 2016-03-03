@@ -1,5 +1,6 @@
 server:
   port: 8888
+
 spring:
   cloud:
     config:
@@ -12,4 +13,11 @@ encrypt:
 security:
   user:
     name: user  # 默认user
-    password: password  # 不设置密码时，在启动时会随机生成一个密码，log级别info打印
+    password: password # 不设置密码时，在启动时会随机生成一个密码，log级别info打印
+
+eureka:
+  instance:
+    hostname: configserver
+  client:
+    service-url:
+      defaultZone: http://10.241.60.52:8080/eureka/v2/
