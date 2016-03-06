@@ -19,5 +19,10 @@ eureka:
   instance:
     hostname: configserver
   client:
+#    fetch-remote-regions-registry: zh-middle-1
+    region: zh-middle-1
+    availability-zones:
+      zh-middle-1: zh-middle-1a,zh-middle-1b
     service-url:
-      defaultZone: http://10.241.60.52:8080/eureka/v2/
+      zh-middle-1a: http://192.168.2.4:8761/eureka/
+      zh-middle-1b: http://192.168.2.5:8761/eureka/

@@ -16,6 +16,8 @@
         <module>rpc-api</module>
         <module>rpc-server</module>
         <module>rpc-client</module>
+        <module>configserver</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>
