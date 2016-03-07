@@ -15,11 +15,23 @@ security:
     name: user  # 默认user
     password: password # 不设置密码时，在启动时会随机生成一个密码，log级别info打印
 
+---
+spring:
+  profiles: dev
 eureka:
   instance:
     hostname: configserver
   client:
-#    fetch-remote-regions-registry: zh-middle-1
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+spring:
+  profiles: prod
+eureka:
+  instance:
+    hostname: configserver
+  client:
     region: zh-middle-1
     availability-zones:
       zh-middle-1: zh-middle-1a,zh-middle-1b

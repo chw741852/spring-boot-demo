@@ -3,21 +3,12 @@ spring:
   profiles: discovery1
 server:
   port: 8761
-
 eureka:
   instance:
     hostname: discovery1
   client:
-# 多个eureka service,使用ture
-    registerWithEureka: false
-    fetchRegistry: false
-# This is for mutil services
     service-url:
-      defaultZone: http://localhost:${server.port}/eureka/
-#  server:
-    # 解决警告: EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT.
-    # RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.
-#    enable-self-preservation: false
+      defaultZone: http://192.168.2.4:${server.port}/eureka/
 
 ---
 spring:
@@ -30,3 +21,19 @@ eureka:
   client:
     service-url:
       defaultZone: http://192.168.2.5:${server.port}/eureka/
+
+---
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eurekaserver
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
+  #  server:
+      # 解决警告: EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT.
+      # RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.
+  #    enable-self-preservation: false

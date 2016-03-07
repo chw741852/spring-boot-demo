@@ -18,6 +18,7 @@
         <module>rpc-client</module>
         <module>configserver</module>
         <module>eureka-server</module>
+        <module>hystrix-dashboard</module>
     </modules>
 
     <properties>
