@@ -15,10 +15,13 @@
     <modules>
         <module>eureka-service</module>
         <module>eureka-client</module>
+        <module>hystrix</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <eureka.version>1.4.0</eureka.version>
+        <hystrix.version>1.5.1</hystrix.version>
     </properties>
 
     <dependencyManagement>
@@ -26,7 +29,12 @@
             <dependency>
                 <groupId>com.netflix.eureka</groupId>
                 <artifactId>eureka-client</artifactId>
-                <version>1.4.0</version>
+                <version>${eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-core</artifactId>
+                <version>${hystrix.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
