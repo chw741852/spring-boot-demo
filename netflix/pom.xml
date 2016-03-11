@@ -16,12 +16,15 @@
         <module>eureka-service</module>
         <module>eureka-client</module>
         <module>hystrix</module>
+        <module>turbine</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eureka.version>1.4.0</eureka.version>
         <hystrix.version>1.5.1</hystrix.version>
+        <turbine.version>1.0.0</turbine.version>
+        <servlet.version>3.0-alpha-1</servlet.version>
     </properties>
 
     <dependencyManagement>
@@ -35,6 +38,22 @@
                 <groupId>com.netflix.hystrix</groupId>
                 <artifactId>hystrix-core</artifactId>
                 <version>${hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-metrics-event-stream</artifactId>
+                <version>${hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.turbine</groupId>
+                <artifactId>turbine-core</artifactId>
+                <version>${turbine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>${servlet.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
