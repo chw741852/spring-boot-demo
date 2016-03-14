@@ -3,10 +3,7 @@ package com.hong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -46,7 +43,7 @@ public class ClientController {
     @RequestMapping("/hello")
     public String hello() throws URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
-        // FIXME Wrong!
+        // FIXME Wrong! 弄懂eureka(服务发现)的作用
         return restTemplate.getForObject(new URI("http://rpcserver:8080/hello/from-test"), String.class);
     }
 }

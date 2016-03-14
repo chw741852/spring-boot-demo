@@ -1,0 +1,10 @@
+server:
+  port: 8081
+turbine:
+  aggregator:
+    clusterConfig: HYSTRIX
+  app-config: hystrix
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
