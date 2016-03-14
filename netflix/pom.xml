@@ -23,6 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eureka.version>1.4.0</eureka.version>
         <hystrix.version>1.5.1</hystrix.version>
+        <!--<turbine.version>2.0.0-DP.2</turbine.version>-->
         <turbine.version>1.0.0</turbine.version>
         <servlet.version>3.0-alpha-1</servlet.version>
     </properties>
