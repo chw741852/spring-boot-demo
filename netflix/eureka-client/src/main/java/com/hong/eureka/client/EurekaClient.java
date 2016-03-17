@@ -18,8 +18,6 @@ import java.util.Date;
  * Created by caihongwei on 16/2/23.
  */
 public class EurekaClient {
-    private static final DynamicPropertyFactory configInstance = DynamicPropertyFactory.getInstance();
-
     public void sendRequestToServiceUsingEureka() {
         // initialize the client
         DiscoveryManager.getInstance().initComponent(
